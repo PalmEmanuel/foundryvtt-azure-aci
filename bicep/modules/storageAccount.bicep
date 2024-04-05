@@ -13,13 +13,11 @@ var storageConfigurationMap = {
     kind: 'FileStorage'
     sku: 'Premium_LRS'
     shareQuota: 50
-    largeFileSharesState: null
   }
   Standard_50GB: {
     kind: 'StorageV2'
     sku: 'Standard_LRS'
     shareQuota: 50
-    largeFileSharesState: null
   }
 }
 
@@ -33,7 +31,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   properties: {
     accessTier: 'Hot'
     allowSharedKeyAccess: true
-    largeFileSharesState: storageConfigurationMap[storageConfiguration].largeFileSharesState
+    largeFileSharesState: 'Disabled'
   }
 
   resource symbolicname 'fileServices@2021-02-01' = {
