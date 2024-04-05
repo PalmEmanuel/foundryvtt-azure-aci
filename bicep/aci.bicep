@@ -18,6 +18,8 @@ param foundryPassword string
 @secure()
 param foundryAdminKey string
 
+var storageAccountName = '${baseResourceName}sa${uniqueString(resourceGroupName)}'
+
 @description('The configuration of the Azure Storage SKU to use for storing Foundry VTT user data.')
 @allowed([
   'Premium_100GB'
@@ -43,7 +45,7 @@ module storageAccount './modules/storageAccount.bicep' = {
   scope: rg
   params: {
     location: location
-    storageAccountName: '${baseResourceName}sa${substring(uniqueString(subscription().id), 0, 4)}'
+    storageAccountName: storageAccountName
     storageConfiguration: storageConfiguration
   }
 }
@@ -56,7 +58,7 @@ module containerGroup './modules/containerGroup.bicep' = {
   ]
   params: {
     location: location
-    storageAccountName: baseResourceName
+    storageAccountName: storageAccountName
     containerGroupName: '${baseResourceName}-aci'
     containerDnsName: baseResourceName
     foundryUsername: foundryUsername
