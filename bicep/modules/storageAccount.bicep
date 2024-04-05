@@ -21,7 +21,7 @@ var storageConfigurationMap = {
   }
 }
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   name: storageAccountName
   location: location
   kind: storageConfigurationMap[storageConfiguration].kind
@@ -56,10 +56,10 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
     }
   }
 
-  resource fileservice 'fileServices@2021-02-01' = {
+  resource fileservice 'fileServices@2022-05-01' = {
     name: 'default'
     
-    resource share 'shares@2021-02-01' = {
+    resource share 'shares@2022-05-01' = {
       name: storageShareName
       properties: {
         enabledProtocols: 'SMB'
