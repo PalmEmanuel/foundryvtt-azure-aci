@@ -22,7 +22,7 @@ The following variables should be configured in the repository to define the reg
 - `LOCATION`: The Azure region to deploy the resources to. For example, `AustraliaEast`.
 - `BASE_RESOURCE_NAME`: The base name that will prefixed to all Azure resources deployed to ensure they are unique. For example, `myfvtt`.
 - `RESOURCE_GROUP_NAME`: The name of the Azure resource group to create and add the resources to. For example, `myfvtt-rg`.
-- `STORAGE_CONFIGURATION`: The configuration of the Azure Storage SKU to use for storing Foundry VTT user data. Must be one of `Premium_100GB` or `Standard_100GB`.
+- `STORAGE_CONFIGURATION`: The configuration of the Azure Storage SKU to use for storing Foundry VTT user data. Must be one of `Premium_50GB` or `Standard_50GB`.
 - `CONTAINER_CONFIGURATION`: The configuration of the Azure Container Instance for running the Foundry VTT server. Must be one of `Small`, `Medium` or `Large`.
 
 The following GitHub Secrets need to be defined to ensure that resource names for Storage Account and Container DNS are globally unique and provide access to your Azure subscription for deployment:

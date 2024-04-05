@@ -3,22 +3,22 @@ param storageAccountName string
 param storageShareName string = 'foundryvttdata'
 
 @allowed([
-  'Premium_100GB'
-  'Standard_100GB'
+  'Premium_50GB'
+  'Standard_50GB'
 ])
-param storageConfiguration string = 'Premium_100GB'
+param storageConfiguration string = 'Premium_50GB'
 
 var storageConfigurationMap = {
-  Premium_100GB: {
+  Premium_50GB: {
     kind: 'FileStorage'
     sku: 'Premium_LRS'
-    shareQuota: 100
+    shareQuota: 50
     largeFileSharesState: null
   }
-  Standard_100GB: {
+  Standard_50GB: {
     kind: 'StorageV2'
     sku: 'Standard_LRS'
-    shareQuota: 100
+    shareQuota: 50
     largeFileSharesState: null
   }
 }
@@ -32,10 +32,9 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   }
   properties: {
     accessTier: 'Hot'
+    minimumTlsVersion: 'TLS1_2'
     allowSharedKeyAccess: true
     largeFileSharesState: storageConfigurationMap[storageConfiguration].largeFileSharesState
-    allowCrossTenantReplication: false
-    supportsHttpsTrafficOnly: true
   }
 
   resource symbolicname 'fileServices@2021-02-01' = {

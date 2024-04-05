@@ -20,10 +20,10 @@ param foundryAdminKey string
 
 @description('The configuration of the Azure Storage SKU to use for storing Foundry VTT user data.')
 @allowed([
-  'Premium_100GB'
-  'Standard_100GB'
+  'Premium_50GB'
+  'Standard_50GB'
 ])
-param storageConfiguration string = 'Premium_100GB'
+param storageConfiguration string = 'Premium_50GB'
 
 @description('The configuration of the Azure Container Instance for running the Foundry VTT server.')
 @allowed([
