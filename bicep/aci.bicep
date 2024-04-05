@@ -43,7 +43,7 @@ module storageAccount './modules/storageAccount.bicep' = {
   scope: rg
   params: {
     location: location
-    storageAccountName: '${baseResourceName}${substring(uniqueString(resourceGroup().id), 0, 4)}'
+    storageAccountName: '${baseResourceName}${substring(uniqueString(subscription().id), 0, 4)}'
     storageConfiguration: storageConfiguration
   }
 }
