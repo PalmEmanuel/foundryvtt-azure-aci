@@ -34,6 +34,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
     accessTier: 'Hot'
     allowSharedKeyAccess: true
     largeFileSharesState: storageConfigurationMap[storageConfiguration].largeFileSharesState
+    allowCrossTenantReplication: false
+    supportsHttpsTrafficOnly: true
   }
 
   resource symbolicname 'fileServices@2021-02-01' = {
