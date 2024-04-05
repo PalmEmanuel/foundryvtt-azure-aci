@@ -18,8 +18,6 @@ param foundryPassword string
 @secure()
 param foundryAdminKey string
 
-var storageAccountName = '${baseResourceName}sa${uniqueString(resourceGroupName)}'
-
 @description('The configuration of the Azure Storage SKU to use for storing Foundry VTT user data.')
 @allowed([
   'Premium_100GB'
@@ -34,6 +32,8 @@ param storageConfiguration string = 'Premium_100GB'
   'Large'
 ])
 param containerConfiguration string = 'Small'
+
+var storageAccountName = '${baseResourceName}sa${substring(uniqueString(resourceGroupName),0,6)}'
 
 resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
