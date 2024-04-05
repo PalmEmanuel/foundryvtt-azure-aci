@@ -3,21 +3,21 @@ param storageAccountName string
 param storageShareName string = 'foundryvttdata'
 
 @allowed([
-  'Premium_50GB'
-  'Standard_50GB'
+  'Premium_100GB'
+  'Standard_100GB'
 ])
-param storageConfiguration string = 'Premium_50GB'
+param storageConfiguration string = 'Premium_100GB'
 
 var storageConfigurationMap = {
-  Premium_50GB: {
+  Premium_100GB: {
     kind: 'FileStorage'
     sku: 'Premium_LRS'
-    shareQuota: 50
+    shareQuota: 100
   }
-  Standard_50GB: {
+  Standard_100GB: {
     kind: 'StorageV2'
     sku: 'Standard_LRS'
-    shareQuota: 50
+    shareQuota: 100
   }
 }
 
