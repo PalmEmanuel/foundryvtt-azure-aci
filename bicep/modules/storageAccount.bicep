@@ -64,7 +64,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
       properties: {
         enabledProtocols: 'SMB'
         shareQuota: storageConfigurationMap[storageConfiguration].shareQuota
-        accessTier: 'Premium'
       }
     }
   }
