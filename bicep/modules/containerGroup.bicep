@@ -35,11 +35,11 @@ var containerConfigurationMap = {
   }
 }
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' existing = {
   name: storageAccountName
 }
 
-resource containerGroup 'Microsoft.ContainerInstance/containerGroups@2021-03-01' = {
+resource containerGroup 'Microsoft.ContainerInstance/containerGroups@2021-10-01' = {
   name: containerGroupName
   location: location
   properties: {
