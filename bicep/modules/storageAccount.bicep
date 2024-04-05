@@ -29,15 +29,37 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
     name: storageConfigurationMap[storageConfiguration].sku
   }
   properties: {
+    allowCrossTenantReplication: false
+    minimumTlsVersion: 'TLS1_2'
     accessTier: 'Hot'
     allowSharedKeyAccess: true
     largeFileSharesState: 'Enabled'
+    supportsHttpsTrafficOnly: true
+    encryption: {
+      keySource: 'Microsoft.Storage'
+      services: {
+        file: {
+          keyType: 'Account'
+          enabled: true
+        }
+        blob: {
+          keyType: 'Account'
+          enabled: true
+        }
+      }
+    }
+    networkAcls: {
+      defaultAction: 'Allow'
+      bypass: 'AzureServices'
+      virtualNetworkRules: []
+      ipRules: []
+    }
   }
 
-  resource symbolicname 'fileServices@2021-02-01' = {
+  resource fileservice 'fileServices@2021-02-01' = {
     name: 'default'
-
-    resource symbolicname 'shares@2021-02-01' = {
+    
+    resource share 'shares@2021-02-01' = {
       name: storageShareName
       properties: {
         enabledProtocols: 'SMB'
