@@ -31,7 +31,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   properties: {
     accessTier: 'Hot'
     allowSharedKeyAccess: true
-    largeFileSharesState: 'Disabled'
+    largeFileSharesState: 'Enabled'
   }
 
   resource symbolicname 'fileServices@2021-02-01' = {
